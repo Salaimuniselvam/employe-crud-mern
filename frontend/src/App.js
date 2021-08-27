@@ -12,7 +12,7 @@ const App = () => {
 	const [currentUser, setCurrentUser] = useState(initialFormState);
 	const [editing, setEditing] = useState(false);
 	const getData = () => {
-		axios("https://social-media-apps7.herokuapp.com/employeedata")
+		axios.get("https://social-media-apps7.herokuapp.com/employeedata")
 			.then((res) => {
 				const data = res.data;
 				setUsers(data)
