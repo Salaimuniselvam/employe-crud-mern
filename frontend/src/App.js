@@ -11,9 +11,8 @@ const App = () => {
 	const initialFormState = { id: null, name: '', email: '' };
 	const [currentUser, setCurrentUser] = useState(initialFormState);
 	const [editing, setEditing] = useState(false);
-
 	const getData = () => {
-		axios("http://localhost:5000/employeedata")
+		axios("https://social-media-apps7.herokuapp.com/employeedata")
 			.then((res) => {
 				const data = res.data;
 				setUsers(data)
@@ -31,20 +30,20 @@ const App = () => {
 	const addUser = user => {
 		console.log(user)
 		setUsers([...users, user])
-		axios.post("http://localhost:5000/employeedata", user)
+		axios.post("https://social-media-apps7.herokuapp.com/employeedata", user)
 			.then(() => getData())
 	}
 
 	const deleteUser = id => {
 		console.log(id)
-		axios.delete(`http://localhost:5000/employeedata/${id}`)
+		axios.delete(`https://social-media-apps7.herokuapp.com/employeedata/${id}`)
 		const data = users.filter(datas => datas._id !== id);
 		setUsers(data)
 		setEditing(false)
 	}
 
 	const updateUser = (id, updatedUser) => {
-		axios.patch(`http://localhost:5000/employeedata/${id}`, updatedUser)
+		axios.patch(`https://social-media-apps7.herokuapp.com/employeedata/${id}`, updatedUser)
 			.then(() => getData())
 		const user = users.map(user => user._id !== id ? user : updatedUser)
 		setUsers(user)
