@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 
 const app = express();
-const url = `mongodb+srv://employee:salary@cluster0.uikfl.mongodb.net/employe-data?retryWrites=true&w=majority`;
+const url = `your mongodb database url`;
 
 app.use(express.json());
 app.use(cors());
@@ -26,7 +26,9 @@ mongoose.connect(
 );
 
 const Router = require("./router/Router");
-app.get('/', (req, res) => res.send("welcome to the employee crud app"))
+app.get("/", (req, res) => res.send("welcome to the employee crud app"));
 app.use("/employeedata", Router);
 
-app.listen(process.env.PORT || 5000, () => console.log("connected successfully"));
+app.listen(process.env.PORT || 5000, () =>
+  console.log("connected successfully")
+);
